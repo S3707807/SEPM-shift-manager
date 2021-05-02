@@ -20,9 +20,14 @@
 
     //query
     $q = "INSERT INTO staff values(null, '$email', '$password', '$firstname', '$lastname', $worklimit, '$phone', '$address', '$role')";
-    mysqli_query($db, $q);
+    $result = mysqli_query($db, $q);
 
-    header("Location:register.php");
+    //if there is an error with the query
+    if ($result == false){
+        header("Location:register.php?status=error");
+    } else {
+        header("Location:register.php?status=success");
+    }
     ?>
 
 </body>

@@ -48,7 +48,15 @@
             </tr>
         </table>
     </form>
-
+    <?php
+    if (isset($_GET['status'])) {
+        if ($_GET['status'] == 'success') {
+            print("Account has been created");
+        } else {
+            print("The query returned an error.");
+        }
+    }
+    ?>
 </body>
 
 </html>
