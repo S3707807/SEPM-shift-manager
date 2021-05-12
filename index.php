@@ -31,7 +31,7 @@
                         <div class="card-body">
                             <img src="img/image.jpeg" class="rounded-circle" width="150">
                             <div class="mt-3">
-                                <h1><?php echo ("$row[3]"); ?></h1>
+                                <h1><?php echo ("$row[firstname]"); ?></h1>
                                 <a href=""><u>
                                         <h4>Shift History</h4>
                                     </u></a>
@@ -51,7 +51,7 @@
                                     <h5>Full name</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                    <?php echo ("$row[3] $row[4]"); ?>
+                                    <?php echo ("$row[firstname] $row[lastname]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -60,7 +60,7 @@
                                     <h5>Preferred Name</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                    <?php echo ("$row[3] $row[4]"); ?>
+                                    <?php echo ("$row[firstname]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -69,7 +69,7 @@
                                     <h5>Email</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[1]"); ?>
+                                <?php echo("$row[email]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -78,7 +78,7 @@
                                     <h5>Phone</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[6]"); ?>
+                                <?php echo("$row[phone]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -87,7 +87,7 @@
                                     <h5>Address</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[7]"); ?>
+                                <?php echo("$row[address]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -96,7 +96,7 @@
                                     <h5>Working hours per week</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[5]"); ?>
+                                <?php echo("$row[worklimit]"); ?>
                                 </div>
                             </div>
                         </div>
