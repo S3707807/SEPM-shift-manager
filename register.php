@@ -51,12 +51,40 @@
     <?php
     if (isset($_GET['status'])) {
         if ($_GET['status'] == 'success') {
-            print("Account has been created");
+            echo ("<p>Account has been created</p>");
         } else {
-            print("The query returned an error.");
+            echo ("<p>The query returned an error.</p>");
         }
     }
     ?>
+    <h2>Staff accounts</h2>
+    <table>
+        <?php
+        //connect to the db
+        $db = mysqli_connect("localhost", "root", "", "work");
+
+        //query
+        $q = "SELECT * FROM staff";
+        $result = mysqli_query($db, $q);
+        // If empty returned
+        if (mysqli_num_rows($result) == 0) {
+            echo ("0 accounts found");
+        } else {
+            echo ("<tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                </tr>");
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo ("<tr>
+                    <td>$row[staff_id]</td>
+                    <td><a href='index.php?staff_id=$row[staff_id]'>$row[firstname] $row[lastname]</a></td>
+                    <td>$row[role]</td>
+                    </tr>");
+            }
+        }
+        ?>
+    </table>
 </body>
 
 </html>
