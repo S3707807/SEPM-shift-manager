@@ -23,7 +23,7 @@
             <div class="topbar">
                 <a href="">Logout</a>
                 <a href="">Calendar</a>
-                <a href="">Home</a>
+                <a href="">My Profile Page</a>
             </div>
             <div class="row">
                 <div class="col-md-4 mt-1">
