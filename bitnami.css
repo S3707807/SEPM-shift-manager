@@ -50,6 +50,17 @@ body{
       text-align: center;
 
   }
+  .RegisterPage{
+      width: 382px;
+      overflow: hidden;
+      margin: auto;
+      margin: 20 20 20 450px;
+      padding: 50px;
+
+      background-color: teal;
+      border-radius: 15px ;
+
+  }
   .login
   {
       margin: 0;
@@ -57,27 +68,45 @@ body{
       font-family: Arial, Helvetica, sans-serif;
   }
 
-#uname{
-      width: 300px;
-      height: 30px;
-      border: none;
-      border-radius: 3px;
-      padding-top: 5px;
-      margin-top: 5px;
-      padding-bottom: 2px;
-      margin-bottom: 2px;
-  }
-  #psw{
-      width: 300px;
-      height: 30px;
-      border: none;
-      border-radius: 3px;
-      padding-top: 5px;
-      margin-top: 5px;
-      padding-bottom: 2px;
-      margin-bottom: 2px;
+  .RegisterHeader {
+    background-color: teal;
+    color: white;
 
   }
+
+  .maintable {
+    background-color: #333;
+    color: white;
+
+  }
+
+
+
+#email, #password, #firstname, #lastname, #worklimit, #phone, #address, #role{
+      font-family: Helvetica, sans-serif;
+      width: 350px;
+      height: 30px;
+      border: none;
+      padding-top: 1px;
+      margin-top: 1px;
+      padding-bottom: 1px;
+      margin-bottom: 1px;
+      border-radius: 5px ;
+
+
+  }
+  #manager, #staff{
+        width: 50px;
+        height: 30px;
+        border: none;
+        padding-top: 1px;
+        margin-top: 1px;
+        padding-bottom: 1px;
+        text-align: center;
+
+    }
+
+
   #log, #logMan{
       width: 300px;
       height: 30px;
@@ -87,4 +116,8 @@ body{
       margin-top: 10px;
       color: blue;
       text-align: center;
+  }
+
+  #loginH2 {
+    text-align: center;
   }
