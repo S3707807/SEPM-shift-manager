@@ -4,6 +4,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/css/bootstrap.min.css">
     <link rel="stylesheet" href="bitnami.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -16,7 +17,6 @@
     $q = "SELECT * FROM staff WHERE staff_id = '$_GET[staff_id]'";
     $result = mysqli_query($db, $q);
     $row = mysqli_fetch_array($result, MYSQLI_BOTH);
-
     ?>
     <div class="container">
         <div class="main">
@@ -38,6 +38,10 @@
                                 <a href=""> <u>
                                         <h4>Shift Availabilites</h4>
                                     </u> </a>
+                                <form method="post" action="process_deactivate.php">
+                                    <input type="hidden" name="staff_id" value="<?php echo("$_GET[staff_id]"); ?>">
+                                    <input type="submit" value="Deactivate">
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -69,7 +73,7 @@
                                     <h5>Email</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[email]"); ?>
+                                    <?php echo ("$row[email]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -78,7 +82,7 @@
                                     <h5>Phone</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[phone]"); ?>
+                                    <?php echo ("$row[phone]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -87,7 +91,7 @@
                                     <h5>Address</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[address]"); ?>
+                                    <?php echo ("$row[address]"); ?>
                                 </div>
                             </div>
                             <hr>
@@ -96,7 +100,7 @@
                                     <h5>Working hours per week</h5>
                                 </div>
                                 <div class="col-md-9 text-secondary">
-                                <?php echo("$row[worklimit]"); ?>
+                                    <?php echo ("$row[worklimit]"); ?>
                                 </div>
                             </div>
                         </div>
