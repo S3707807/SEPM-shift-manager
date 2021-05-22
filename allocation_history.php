@@ -13,31 +13,32 @@
             <div class="topbar">
                 <a href="">My Profile Page</a>
             </div>
-			<div class="row">
-			    <div class="col-md-12 mt-1">
+	    <div class="row">
+		<div class="col-md-12 mt-1">
                     <div class="content">
                         <div class="card-body">
-						    <table class="table table-striped table-hover">
-							<thead>
-							    <tr>
-								  <th>Shift ID</th>
-								  <th>Date</th>								
-								  <th>Start Time</th>								
-								  <th>End Time</th>
-								  <th>Location</th>
-								  <th>Shift Manager</th>
-								  <th>Is Active</th>
-								</tr>
-                            </thead>
-							<tbody>
+		            <table class="table table-striped table-hover">
+				<thead>
+		  		    <tr>
+					<th>Shift ID</th>
+					<th>Date</th>								
+					<th>Start Time</th>								
+					<th>End Time</th>
+					<th>Location</th>
+					<th>Shift Manager</th>
+					<th>Is Active</th>
+				    </tr>
+                                </thead>
+				<tbody>
 							
-							</tbody>
-							</table> 					
+				</tbody>
+			     </table> 					
                         </div>
                     </div>
-                </div>
-			
-			</div>
+                </div>	
+	    </div>
         </div>
-	</div>
+    </div>
 </body>
+
+</html>
