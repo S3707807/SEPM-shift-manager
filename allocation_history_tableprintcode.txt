@@ -1,0 +1,11 @@
+while (){
+		echo "<tr><td>" . $row[''] . "</td>";
+		echo "<td>" . $row[''] . "</td>";
+		echo "<td>" . $row[''] . "</td>";
+		echo "<td>" . $row[''] . "</td>";
+		echo "<td>" . $row[''] . "</td>";
+		echo "<td>" . $row[''] . "</td>";
+		echo "<td>" . $row[''] . "</td></tr>";
+}	
+if is active shift the table should return green, 
+not active then return red						
