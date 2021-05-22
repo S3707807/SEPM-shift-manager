@@ -18,18 +18,13 @@ body{
   text-decoration: none;
   font-size: 26px;
 }
-.sidebar{
-  background-color: #333;
-  color: white;
-  height: 100%;
-}
-.sidebar a{
-  margin-left: 10px; 
-  display: block; 
-  color: white;
-  padding-bottom: 10px;
-  font-size: 30px;
+.history_header{
+  float:left; 
+  color: whitesmoke;
+  text-align: center;
+  padding: 20px 26px;
   text-decoration: none;
+  font-size: 26px;
 }
 .card{
     position: relative;

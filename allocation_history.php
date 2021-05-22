@@ -11,6 +11,7 @@
     <div class="container">
         <div class="main">
             <div class="topbar">
+                <h1 class="history_header">Shift Allocation Histories</h1>
                 <a href="">My Profile Page</a>
             </div>
 	    <div class="row">
