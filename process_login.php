@@ -15,6 +15,7 @@ if (mysqli_num_rows($result) > 0) {
     session_start();
     $row = mysqli_fetch_assoc($result);
     $_SESSION['staff_id'] = $row['staff_id'];
+    $_SESSION['role'] = $row['role'];
 
     // send the user to their calendar (profile is placeholder landing page for now)
     header("Location:profile.php?staff_id={$_SESSION['staff_id']}");

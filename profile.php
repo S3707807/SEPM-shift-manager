@@ -21,9 +21,22 @@ include 'sessioncheck.php';
     $db = mysqli_connect("localhost", "root", "", "work");
 
     //query
-    $q = "SELECT * FROM staff WHERE staff_id = '$_GET[staff_id]'";
+    //if a user id is specified, go to that profile page
+    if (isset($_GET['staff_id'])) {
+        // make sure the current user is permitted to view that profile
+        if ($_SESSION['role'] == 'manager') {
+            $q = "SELECT * FROM staff WHERE staff_id = '$_GET[staff_id]'";
+        } else {
+            // otherwise go to my profile page
+            $q = "SELECT * FROM staff WHERE staff_id = '$_SESSION[staff_id]'";
+        }
+    } else {
+        // otherwise go to my profile page
+        $q = "SELECT * FROM staff WHERE staff_id = '$_SESSION[staff_id]'";
+    }
     $result = mysqli_query($db, $q);
     $row = mysqli_fetch_array($result, MYSQLI_BOTH);
+
     ?>
     <div class="container">
         <div class="main">
@@ -37,10 +50,16 @@ include 'sessioncheck.php';
                                 <a href="allocation_history.php?staff_id=<?php echo ("$_GET[staff_id]"); ?>"><u>
                                         <h4>Shift History</h4>
                                     </u></a>
-                                <form method="post" action="process_deactivate.php">
-                                    <input type="hidden" name="staff_id" value="<?php echo ("$_GET[staff_id]"); ?>">
-                                    <input type="submit" value="Deactivate">
-                                </form>
+                                <?php
+                                // Only show the deactivate button if
+                                // - This current user is a manager
+                                // - It is not your own profile page (You can't deactivate yourself!)
+                                if ($_SESSION['role'] == 'manager' && $_SESSION['staff_id'] !== $_GET['staff_id']) { ?>
+                                    <form method="post" action="process_deactivate.php">
+                                        <input type="hidden" name="staff_id" value="<?php echo ("$_GET[staff_id]"); ?>">
+                                        <input type="submit" value="Deactivate">
+                                    </form>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
