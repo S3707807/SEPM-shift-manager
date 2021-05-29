@@ -20,7 +20,7 @@
     $result = mysqli_query($db, $q);
 
     //if there is an error with the query
-    if ($result == false){
+    if ($result == false) {
         header("Location:register.php?status=error");
     } else {
         header("Location:register.php?status=success");
