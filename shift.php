@@ -1,5 +1,6 @@
 <?php
 include 'sessioncheck.php';
+include 'admincheck.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

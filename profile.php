@@ -7,7 +7,9 @@ include 'sessioncheck.php';
 <head>
     <link rel="stylesheet" type="text/css" href="bootstrap-4.5.3-dist/css/css/bootstrap.min.css">
     <link rel="stylesheet" href="bitnami.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <title>My Profile</title>
 </head>
 
@@ -65,7 +67,18 @@ include 'sessioncheck.php';
                 </div>
                 <div class="col-md-8 mt-1">
                     <div class="card mb-3 content">
-                        <h1 class="m-3 pt-3">About</h1>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h1 class="m-3 pt-3">About</h1>
+                            </div>
+                            <div class="col-md-5">
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#shiftModal" style="margin: 30px">
+                                    Assign new shift
+                                </button>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-3">
@@ -125,7 +138,57 @@ include 'sessioncheck.php';
                 </div>
             </div>
         </div>
-    </div>
+        <div class="modal" id="shiftModal" role="dialog" style="margin-top: 128px">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Assign shift</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            &times;
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <?php
+                        //connect to the db
+                        $db = mysqli_connect("localhost", "root", "", "work");
+
+                        //query
+                        $q = "SELECT * FROM shifts";
+                        $result = mysqli_query($db, $q);
+
+                        // If there is at least 1 shift available, display the form
+                        if (mysqli_num_rows($result) > 0) {
+                        ?>
+                            <form method="post" action="assign_shift.php" id="shiftform">
+                                <select name="shift" form="shiftform">
+                                    <?php
+                                        while($row = mysqli_fetch_assoc($result)) {
+                                            $day = ucfirst($row['day']);
+                                            // remove seconds from time format
+                                            $start = substr($row['start'], 0, -3);
+                                            $end = substr($row['end'], 0, -3);
+                                            $location = ucfirst($row['location']);
+                                            echo("<option value=\"$row[shift_id]\">$day $start - $end ($location)</option>'");
+                                        }
+                                    ?>
+                                </select>
+                            <input type="hidden" name="staff_id" value="<?php echo ("$_GET[staff_id]"); ?>">
+                            </form>
+                        <?php
+                        } else {
+                        ?>
+                            <p>There are no shifts to display. <a href="shift.php">Create a new shift</a></p>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" form="shiftform">Assign</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 
 </html>
