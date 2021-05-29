@@ -1,0 +1,53 @@
+body{
+  margin-top: 20px;
+  background-color: lightgray; 
+}
+.main{
+  padding: 15px; 
+  font-family: Arial, Helvetica, sans-serif;
+}
+.topbar{
+  background-color: teal;
+  overflow: hidden;
+}
+.topbar a{
+  float:right; 
+  color: whitesmoke;
+  text-align: center;
+  padding: 20px 26px;
+  text-decoration: none;
+  font-size: 26px;
+}
+.history_header{
+  float:left; 
+  color: whitesmoke;
+  text-align: center;
+  padding: 20px 26px;
+  text-decoration: none;
+  font-size: 26px;
+}
+.card{
+  position: relative;
+  display: flex; 
+  flex-direction: column;
+}
+.content{
+  background-color: whitesmoke; 
+}
+nav {
+  position: absolute;
+  top: 10px;
+  right: 100px;
+}
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+nav ul li {
+  display: inline;
+  padding-left: 16px;
+}
+nav ul li a {
+  font-family: Arial, Helvetica, sans-serif;
+}
