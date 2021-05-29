@@ -23,11 +23,16 @@ role ENUM('none', 'manager') DEFAULT 'none'
 CREATE TABLE shifts(
 shift_id INT AUTO_INCREMENT PRIMARY KEY,
 day VARCHAR(20),
-start DATETIME,
-end DATETIME
+start TIME,
+end TIME,
+location VARCHAR(20)
 );
 
 CREATE TABLE staff_shifts(
 staff_id INT REFERENCES staff (staff_id),
 shift_id INT REFERENCES shift (shift_id)
 );
+
+-- email: admin
+-- password: admin
+INSERT INTO staff VALUES(NULL, 'admin', 'admin', 'John', 'Doe', 0, '+123456789', '123 Test Rd', 'manager');
