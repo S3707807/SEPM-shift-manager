@@ -35,34 +35,47 @@ include 'sessioncheck.php';
 										<th>Location</th>
 										<th>Status</th>
 									</tr>
-									<?php 
-										//connect to the db
-										$db = mysqli_connect("localhost", "root", "", "work");
+									<?php
+									//connect to the db
+									$db = mysqli_connect("localhost", "root", "", "work");
 
-										//query
-										$q = "SELECT shifts.shift_id, shifts.day, shifts.start, shifts.end, shifts.location, staff_shifts.status
+									if (isset($_GET['staff_id'])) {
+										// make sure the current user is permitted to view this shift history
+										if ($_SESSION['role'] == 'manager') {
+											$id = $_GET['staff_id'];
+										} else {
+											// otherwise go to my shift history
+											$id = $_SESSION['staff_id'];
+										}
+									} else {
+										// otherwise go to my shift history
+										$id = $_SESSION['staff_id'];
+									}
+
+									//query
+									$q = "SELECT shifts.shift_id, shifts.day, shifts.start, shifts.end, shifts.location, staff_shifts.status
 										FROM shifts
 										INNER JOIN staff_shifts ON shifts.shift_id = staff_shifts.shift_id
-										WHERE staff_id = $_GET[staff_id] AND status = 'active'";
+										WHERE staff_id = $id AND status = 'active'";
 
-										$result = mysqli_query($db, $q);
+									$result = mysqli_query($db, $q);
 
-										while($row = mysqli_fetch_assoc($result)) {
-											// Display a formatted row of every shift assigned to this user
-											echo("<tr>");
-											echo("<td>$row[shift_id]</td>");
-											$day = ucfirst($row['day']);
-											echo("<td>$day</td>");
-											$start = substr($row['start'], 0, -3);
-											$end = substr($row['end'], 0, -3);
-											echo("<td>$start</td>");
-											echo("<td>$end</td>");
-											$location = ucfirst($row['location']);
-											echo("<td>$location</td>");
-											$status = ucfirst($row['status']);
-											echo("<td>$status</td>");
-											echo("</tr>");
-										}
+									while ($row = mysqli_fetch_assoc($result)) {
+										// Display a formatted row of every shift assigned to this user
+										echo ("<tr>");
+										echo ("<td>$row[shift_id]</td>");
+										$day = ucfirst($row['day']);
+										echo ("<td>$day</td>");
+										$start = substr($row['start'], 0, -3);
+										$end = substr($row['end'], 0, -3);
+										echo ("<td>$start</td>");
+										echo ("<td>$end</td>");
+										$location = ucfirst($row['location']);
+										echo ("<td>$location</td>");
+										$status = ucfirst($row['status']);
+										echo ("<td>$status</td>");
+										echo ("</tr>");
+									}
 									?>
 								</thead>
 								<tbody>

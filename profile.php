@@ -25,17 +25,19 @@ include 'sessioncheck.php';
     //query
     //if a user id is specified, go to that profile page
     if (isset($_GET['staff_id'])) {
-        // make sure the current user is permitted to view that profile
+        // make sure the current user is permitted to view this shift history
         if ($_SESSION['role'] == 'manager') {
-            $q = "SELECT * FROM staff WHERE staff_id = '$_GET[staff_id]'";
+            $id = $_GET['staff_id'];
         } else {
-            // otherwise go to my profile page
-            $q = "SELECT * FROM staff WHERE staff_id = '$_SESSION[staff_id]'";
+            // otherwise go to my shift history
+            $id = $_SESSION['staff_id'];
         }
     } else {
-        // otherwise go to my profile page
-        $q = "SELECT * FROM staff WHERE staff_id = '$_SESSION[staff_id]'";
+        // otherwise go to my shift history
+        $id = $_SESSION['staff_id'];
     }
+        $q = "SELECT * FROM staff WHERE staff_id = $id";
+
     $result = mysqli_query($db, $q);
     $row = mysqli_fetch_array($result, MYSQLI_BOTH);
     ?>
