@@ -36,7 +36,6 @@ include 'sessioncheck.php';
     }
     $result = mysqli_query($db, $q);
     $row = mysqli_fetch_array($result, MYSQLI_BOTH);
-
     ?>
     <div class="container">
         <div class="main">

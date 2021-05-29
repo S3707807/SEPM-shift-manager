@@ -26,6 +26,7 @@ include 'sessioncheck.php';
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
+										<?php // SELECT DATE_FORMAT(column_name, '%H:%i'); ?>
 										<th>Shift ID</th>
 										<th>Date</th>
 										<th>Start Time</th>
@@ -36,7 +37,6 @@ include 'sessioncheck.php';
 									</tr>
 								</thead>
 								<tbody>
-
 								</tbody>
 							</table>
 						</div>

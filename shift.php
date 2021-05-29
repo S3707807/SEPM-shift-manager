@@ -19,7 +19,7 @@ include 'sessioncheck.php';
     ?>
     <div class="container">
         <div class="title">Shift Creation Page</div>
-        <form action="add_shift.php" id="shiftform">
+        <form action="add_shift.php" id="shiftform" method="post">
             <div class="user-details">
                 <div class="input-box">
                     <span class="details">Start Time</span>
@@ -50,6 +50,15 @@ include 'sessioncheck.php';
                 <input type="submit" value="Create">
             </div>
         </form>
+        <?php
+        if (isset($_GET['status'])) {
+            if ($_GET['status'] == 'success') {
+                echo ("<p>Shift has been created</p>");
+            } else {
+                echo ("<p>The query returned an error.</p>");
+            }
+        }
+        ?>
     </div>
 </body>
 
